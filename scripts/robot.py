@@ -44,7 +44,7 @@ class Robot():
         self.calculate_temperatures()
         self.temp_activate_sensor = False
         rospy.sleep(3)
-        self.rate = rospy.Rate(1)
+        self.rate = rospy.Rate(5)
         while not self.temp_activate_sensor:
             self.activation_publisher.publish(True)
             self.rate.sleep()
