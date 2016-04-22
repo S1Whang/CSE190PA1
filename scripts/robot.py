@@ -8,7 +8,6 @@ from cse_190_assi_1.srv import moveService
 from cse_190_assi_1.msg import temperatureMessage
 from cse_190_assi_1.msg import RobotProbabilities
 from std_msgs.msg import Bool, String, Float32
-import util
 class Robot():
     def __init__(self):
         self.current_move = 0
@@ -39,7 +38,6 @@ class Robot():
         self.baymap = [[self.prob for x in range(len(self.config
             ['pipe_map'] [0]))]for y in range(len(self.config
             ['pipe_map']))]
-        util.print_2d_floats(self.baymap)
         self.calculate_textures()
         self.calculate_temperatures()
         self.temp_activate_sensor = False
@@ -88,7 +86,6 @@ class Robot():
                 else:
                     self.baymap[i][j] = (1-p_tex) * self.baymap[i][j]
         print "Text: ", self.text_response.data
-        util.print_2d_floats(self.baymap)
     def calculate_temperatures(self):
         self.hot = 0
         self.mid = 0
